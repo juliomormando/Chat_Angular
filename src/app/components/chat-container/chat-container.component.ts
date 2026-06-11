@@ -20,22 +20,20 @@ export class ChatContainerComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    // 1. Escuchamos los cambios en los parámetros de la URL (el :id)
+    // Escuchamos los cambios en los parámetros de la URL (el :id)
     this.route.paramMap
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(params => {
         const id = params.get('id');
+        
         if (id) {
-          // Si hay ID en la URL, se lo enviamos al servicio para que cargue los mensajes
+          // Si hay ID en la URL, cargamos esa conversación
           this.chatService.selectConversation(id);
+        } else {
+          // NUEVO: Si NO hay ID (ej: cuando vas a /chats a secas),
+          // le avisamos al servicio que limpie la selección activa.
+          this.chatService.clearActiveConversation();
         }
       });
-
-    // 2. Escuchamos si la ruta actual es '/nuevo' para abrir el formulario reactivo automáticamente
-    this.route.url.subscribe(urlSegments => {
-      const esNuevo = urlSegments.some(segment => segment.path === 'nuevo');
-      // Podés crear una señal en tu servicio o una propiedad para avisarle a la lista 
-      // de contactos que despliegue el formulario.
-    });
   }
 }

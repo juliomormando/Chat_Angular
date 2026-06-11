@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms'; 
 import { ChatService } from '../../services/chat.service';
 import { FilterContactsPipe } from '../../pipes/filter-contacts.pipe';
-import { Router } from '@angular/router'; // <-- Importar el Router
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-contact-list',

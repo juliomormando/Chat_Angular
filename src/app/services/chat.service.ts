@@ -23,9 +23,15 @@ export class ChatService {
 
   constructor() {
     // Al arrancar, podemos preseleccionar la primera conversación si existe
-    if (MOCK_CONVERSATIONS.length > 0) {
+    /* if (MOCK_CONVERSATIONS.length > 0) {
       this.selectConversation(MOCK_CONVERSATIONS[0].id);
     }
+      */
+  }
+
+  // Acción: Limpiar la conversación seleccionada (útil para pantallas móviles)
+  clearActiveConversation() {
+    this.activeConversationIdSignal.set(null);
   }
 
   // 4. Acción: Seleccionar un chat de la lista

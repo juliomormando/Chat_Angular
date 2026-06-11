@@ -14,6 +14,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color:rgb(216, 238, 231)
 }
 
 .chat-panel {

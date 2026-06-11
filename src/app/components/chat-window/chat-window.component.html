@@ -1,0 +1,45 @@
+<div class="chat-window-container">
+  
+  <header class="chat-header">
+    <div class="avatar-container">
+      <img [src]="activeConversation?.participant?.avatarUrl" alt="Avatar" class="avatar">
+      <span class="status-indicator" [class]="activeConversation?.participant?.status"></span>
+    </div>
+    <div class="user-info">
+      <h3>{{ activeConversation?.participant?.name }}</h3>
+      <p class="status-text">{{ activeConversation?.participant?.status }}</p>
+    </div>
+  </header>
+
+  <main class="messages-feed" #scrollContainer>
+    @for (msg of activeConversation?.messages; track msg.id) {
+      <div [@fadeInMessage] 
+           [class]="msg.senderId === 'me' ? 'message-wrapper sent' : 'message-wrapper received'">
+        <div class="message-bubble">
+          <p class="message-text">{{ msg.text }}</p>
+          <span class="message-time">{{ msg.timestamp | date:'HH:mm' }}</span>
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-chat">
+        <p>No hay mensajes en esta conversación. ¡Escribí algo para empezar!</p>
+      </div>
+    }
+  </main>
+
+  <footer class="chat-footer">
+    <form class="message-form" (ngSubmit)="onSendMessage()">
+      <input 
+        type="text" 
+        [(ngModel)]="newMessageText" 
+        name="messageInput"
+        placeholder="Escribe un mensaje aquí..." 
+        autocomplete="off"
+      >
+      <button type="submit" [disabled]="!newMessageText.trim()">
+        Enviar
+      </button>
+    </form>
+  </footer>
+
+</div>

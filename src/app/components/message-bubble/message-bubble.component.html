@@ -1,0 +1,15 @@
+<div class="messages-container" style="display: flex; flex-direction: column; gap: 10px; padding: 20px; overflow-y: auto; height: 100%;">
+  
+  @for (msg of messages; track msg.id) {
+    <div [@fadeInMessage] 
+         [class]="msg.senderId === 'me' ? 'msg-me' : 'msg-other'">
+      
+      <p class="text">{{ msg.text }}</p>
+      <span class="time">{{ msg.timestamp | date:'shortTime' }}</span>
+      
+    </div>
+  } @empty {
+    <div class="no-messages">No hay mensajes. ¡Escribí algo para empezar!</div>
+  }
+
+</div>

@@ -1,0 +1,232 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  font-family: sans-serif;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #1e293b;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Efecto Hover y Activo */
+.contact-item:hover {
+  background-color: #f8fafc;
+}
+
+.contact-item.active {
+  background-color: #e0f2fe; /* Azul muy claro para el seleccionado */
+}
+
+/* Avatar y estados */
+.avatar-wrapper {
+  position: relative;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #cbd5e1;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.status-dot.online { background-color: #22c55e; }
+.status-dot.away { background-color: #eab308; }
+.status-dot.offline { background-color: #94a3b8; }
+
+/* Contenedores de texto */
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Permite que el texto largo se recorte con puntos suspensivos */
+}
+
+.contact-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.contact-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.last-message-time {
+  font-size: 12px;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.contact-body-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.last-message-text {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  padding-right: 10px;
+}
+
+/* Contador de no leídos */
+.unread-badge {
+  background-color: #0284c7;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+/* Estilos para el contenedor del buscador */
+.search-container {
+  margin-top: 12px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f1f5f9;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  background-color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.1);
+}
+
+/* Estilo para el texto de lista vacía filtrada */
+.empty-list {
+  padding: 20px;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+  font-style: italic;
+}
+/* Fila del título de la barra lateral */
+.sidebar-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Botón de + Nuevo */
+.btn-toggle-form {
+  background-color: #0284c7;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-toggle-form:hover {
+  background-color: #0369a1;
+}
+
+/* Formulario Reactivo */
+.reactive-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.form-input {
+  flex: 1;
+  padding: 6px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #0284c7;
+}
+
+.btn-submit {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-submit:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 11px;
+  display: block;
+  margin-bottom: 8px;
+}

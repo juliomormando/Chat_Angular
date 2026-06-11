@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+/* 1. Resetear márgenes y paddings por defecto del navegador */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;      /* Forza a que la pantalla mida exactamente el alto visible */
+  overflow: hidden;   /* Oculta el scroll molesto de la página completa */
+  font-family: sans-serif;
+  background-color: #f8fafc;
+}
+
+/* 2. Configurar el box-sizing para que los paddings no sumen tamaño extra */
+*, *::before, *::after {
+  box-shadow: none;
+  box-sizing: border-box; 
+}

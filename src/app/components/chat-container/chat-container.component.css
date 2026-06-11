@@ -1,0 +1,48 @@
+.main-chat-layout {
+  display: flex;
+  width: 100%;        /* Cambiado de 100vw a 100% para evitar problemas con barras de scroll */
+  height: 100%;       /* Toma el 100% del body (que es 100vh) */
+  overflow: hidden;   /* Garantiza que nada de lo que pase adentro rompa el contenedor */
+  background-color: #f8fafc;
+}
+
+.sidebar-panel {
+  width: 350px;
+  min-width: 300px;
+  max-width: 400px;
+  height: 100%;
+  display: flex;      /* Sumamos esto para que la lista interna use flexbox */
+  flex-direction: column;
+}
+
+.chat-panel {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor de pantalla completa */
+.main-chat-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f8fafc;
+}
+
+/* Panel izquierdo: ocupa un ancho fijo o un porcentaje menor */
+.sidebar-panel {
+  width: 350px; /* Ancho ideal para la lista de contactos */
+  min-width: 300px;
+  max-width: 400px;
+  height: 100%;
+}
+
+/* Panel derecho: toma todo el espacio restante de la pantalla */
+.chat-panel {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

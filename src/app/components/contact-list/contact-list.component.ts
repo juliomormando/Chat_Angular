@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms'; 
 import { ChatService } from '../../services/chat.service';
 import { FilterContactsPipe } from '../../pipes/filter-contacts.pipe';
+import { Router } from '@angular/router'; // <-- Importar el Router
 
 @Component({
   selector: 'app-contact-list',
@@ -17,6 +18,7 @@ import { FilterContactsPipe } from '../../pipes/filter-contacts.pipe';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent {
+  private router = inject(Router);
   private chatService = inject(ChatService);
 
   conversations = this.chatService.conversations;
@@ -39,7 +41,13 @@ export class ContactListComponent {
 
   toggleNewChatForm() {
     this.showForm = !this.showForm;
-    if (!this.showForm) this.newChatForm.reset();
+    if (this.showForm) {
+      // Si abren el formulario, actualizamos la ruta a /nuevo
+      this.router.navigate(['/nuevo']);
+    } else {
+      this.newChatForm.reset();
+      this.router.navigate(['/chats']);
+    }
   }
 
   onCreateChat() {
@@ -55,8 +63,9 @@ export class ContactListComponent {
     this.newChatForm.reset();
     this.showForm = false;
   }
-
+ 
   onSelectConversation(id: string) {
-    this.chatService.selectConversation(id);
+    // Cambiamos la URL de la barra de direcciones
+    this.router.navigate(['/chats', id]);
   }
 }

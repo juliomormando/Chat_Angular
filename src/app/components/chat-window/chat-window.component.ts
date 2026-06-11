@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { ChatService } from '../../services/chat.service';
+import { Router } from '@angular/router'; // Asegurate de tener la importación
 
 @Component({
   selector: 'app-chat-window',
@@ -20,6 +21,7 @@ import { ChatService } from '../../services/chat.service';
   ]
 })
 export class ChatWindowComponent {
+  private router = inject(Router);
   private chatService = inject(ChatService);
 
   // 1. Capturamos el contenedor de mensajes usando una referencia local (#scrollContainer)
@@ -43,6 +45,11 @@ export class ChatWindowComponent {
     });
   }
 
+  onGoBack() {
+    // Al navegar a /chats sin ID, activeConversation() pasa a ser null,
+    // se remueve la clase 'chat-abierto' y el celular vuelve a mostrar la lista.
+    this.router.navigate(['/chats']);
+  }
   onSendMessage() {
     if (!this.newMessageText.trim()) return;
     this.chatService.sendMessage(this.newMessageText);

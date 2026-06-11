@@ -1,6 +1,9 @@
 <div class="chat-window-container">
   
   <header class="chat-header">
+    <button class="btn-back" (click)="onGoBack()">
+      ← Volver
+    </button>
     <div class="avatar-container">
       <img [src]="activeConversation?.participant?.avatarUrl" alt="Avatar" class="avatar">
       <span class="status-indicator" [class]="activeConversation?.participant?.status"></span>

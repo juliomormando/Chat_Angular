@@ -1,8 +1,9 @@
+/* --- DISEÑO GENERAL (ESCRITORIO) --- */
 .main-chat-layout {
   display: flex;
-  width: 100%;        /* Cambiado de 100vw a 100% para evitar problemas con barras de scroll */
-  height: 100%;       /* Toma el 100% del body (que es 100vh) */
-  overflow: hidden;   /* Garantiza que nada de lo que pase adentro rompa el contenedor */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   background-color: #f8fafc;
 }
 
@@ -11,7 +12,7 @@
   min-width: 300px;
   max-width: 400px;
   height: 100%;
-  display: flex;      /* Sumamos esto para que la lista interna use flexbox */
+  display: flex;
   flex-direction: column;
 }
 
@@ -22,27 +23,48 @@
   flex-direction: column;
 }
 
-/* Contenedor de pantalla completa */
-.main-chat-layout {
+/* Pantalla de bienvenida en escritorio */
+.welcome-screen {
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #f8fafc;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #64748b;
+  text-align: center;
+  padding: 20px;
 }
 
-/* Panel izquierdo: ocupa un ancho fijo o un porcentaje menor */
-.sidebar-panel {
-  width: 350px; /* Ancho ideal para la lista de contactos */
-  min-width: 300px;
-  max-width: 400px;
-  height: 100%;
-}
+/* --- RESPONSIVE DESIGN (MÓVILES) --- */
+@media (max-width: 767px) {
+  .main-chat-layout {
+    position: relative;
+  }
 
-/* Panel derecho: toma todo el espacio restante de la pantalla */
-.chat-panel {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  /* Ambos paneles ocupan el 100% en móvil, pero jugamos con clases dinámicas */
+  .sidebar-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    display: block;
+  }
+
+  .chat-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f1f5f9;
+    z-index: 10;
+    display: none; /* Oculto por defecto en móvil */
+  }
+
+  /* CLASES DE CONTROL: Si hay un chat activo, alternamos la visualización */
+  .main-chat-layout.chat-abierto .sidebar-panel {
+    display: none; /* Ocultamos la lista si el chat está abierto */
+  }
+
+  .main-chat-layout.chat-abierto .chat-panel {
+    display: flex; /* Mostramos el chat a pantalla completa */
+  }
 }

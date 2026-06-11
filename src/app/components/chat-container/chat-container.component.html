@@ -1,11 +1,19 @@
-<div class="main-chat-layout">
-  
+<div class="main-chat-layout" [class.chat-abierto]="chatService.activeConversation()">
   <aside class="sidebar-panel">
     <app-contact-list></app-contact-list>
   </aside>
 
   <main class="chat-panel">
-    <app-chat-window></app-chat-window>
+    @if (chatService.activeConversation()) {
+      <app-chat-window></app-chat-window>
+    } @else {
+      <div class="welcome-screen">
+        <div class="welcome-content">
+          <h3>¡Te damos la bienvenida a tu Chat!</h3>
+          <p>Selecciona una persona de la lista de la izquierda para comenzar a enviar mensajes o crea un nuevo contacto.</p>
+        </div>
+      </div>
+    }
   </main>
 
 </div>

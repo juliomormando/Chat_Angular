@@ -176,3 +176,23 @@
   gap: 12px;
   max-height: calc(100vh - 140px);  
 }
+
+/* Por defecto en escritorio está oculto */
+.btn-back {
+  display: none;
+}
+
+/* En móviles lo hacemos visible y estético */
+@media (max-width: 767px) {
+  .btn-back {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: #0284c7;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 15px;
+  }
+}
